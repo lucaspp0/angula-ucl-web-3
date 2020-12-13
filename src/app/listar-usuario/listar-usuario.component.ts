@@ -14,4 +14,8 @@ export class ListarUsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deletar(id: Number){
+    console.log('Deletar: ' + id)
+  }
+
 }

@@ -41,7 +41,10 @@
                     <td> teste </td>
                     <td> teste </td>
                     <td> teste </td>
-                    <td> teste </td>
+                    <td>
+                        <a [routerLink]="['/cadastrar', {id: 1}]"> ins </a>
+                        <span (click)="deletar(1)"> del </span>
+                    </td>
                 </tr>
             </tbody>
         </table>

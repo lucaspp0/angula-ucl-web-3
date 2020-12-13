@@ -1,127 +1,105 @@
 <div class="row">
-
-    <!-- 
-        INICIO TEMPLATE TESTE
-    -->
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">@</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    <div class="col-12 text-truncate">
+        {{ teste }}
     </div>
-
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <span class="input-group-text" id="basic-addon2">@example.com</span>
+    <div class="col-12 text-truncate" *ngIf="id">
+        id: {{ id }}
     </div>
-
-    <label for="basic-url" class="form-label">Your vanity URL</label>
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
-        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-        <span class="input-group-text">.00</span>
-    </div>
-
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-        <span class="input-group-text">@</span>
-        <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-    </div>
-
-    <!-- 
-            FIM TEMPLATE TESTE
-        -->
-
-    <div class="input-group">
-        <span class="input-group-text">With textarea</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input required name="name" id="name" type="text" class="validate">
-        <label class="active" for="name">Nome</label>
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input required name="surname" id="surname" type="text" class="validate">
-        <label class="active" for="surname">Sobrenome</label>
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input required id="pass" type="password" class="validate" name="pass">
-        <label class="active" for="pass">Senha</label>
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input required id="email" type="email" class="validate" name="email">
-        <label class="active" for="email">E-mail</label>
-    </div>
-
-    <div class="col col s12 m6 l3 switch">
-
-        <label class="active" for="gender" style="font-size: 1rem !important;">Sexo</label>
-        <label>
-            Feminino
-            <input id="gender" name="gender" type="checkbox">
-            <span class="lever"></span>
-            Masculino
-        </label>
-
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input id="cpf" type="text" class="validate" name="cpf">
-        <label class="active" for="cpf">CPF</label>
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input id="rg" type="text" class="validate" name="rg">
-        <label class="active" for="rg">RG</label>
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input id="phone" type="text" class="validate" name="phone">
-        <label class="active" for="phone">Telefone</label>
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input class="form-control" type="date" value="2020-11-12" id="born" name="born">
-        <label class="active" for="born">Data de Nascimento</label>
-
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-
-        <select id="maritalStatus" name="maritalStatus">
-              <option value="1" name="maritalStatus" selected>1-Solteiro</option>
-              <option value="2" name="maritalStatus">2-Casado</option>
-              <option value="3" name="maritalStatus">3-Divorciado</option>
-              <option value="4" name="maritalStatus">4-Viúvo</option>
-              <option value="5" name="maritalStatus">5-Separado</option>
-        </select>
-        <label>Estado Civil</label>
-
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input id="cep" type="text" class="validate" name="cep">
-        <label class="active" for="cep">CEP</label>
-    </div>
-
-    <div class="input-field col s12 m6 l3">
-        <input id="adress" type="text" class="validate" name="adress">
-        <label class="active" for="adress">Endereço</label>
+    <div class="col-12 text-truncate" *ngIf="id">
+        chupada da api {{ testeApi }}
     </div>
 
 </div>
 
-<div class="row mb-5">
-    <div class="col s12 center save-btn">
-        <span id="btnSalvar" class="btn btn-large waves-effect waves-light info">  Salvar </span>
-        <a href="listagem.html" id="btnListagem" class="btn btn-large waves-effect waves-light warning"> listagem </a>
+<form class="row" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="input-group">
+            <input required ngModel [(ngModel)]="user.name" placeholder="name" formControlName="name" name="name" id="name" type="text" class="form-control">
+        </div>
     </div>
-</div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="input-group">
+            <input required ngModel [(ngModel)]="user.surname" placeholder="surname" formControlName="surname" name="surname" id="surname" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="input-group">
+            <input required id="pass" type="password" class="form-control" ngModel [(ngModel)]="user.pass" placeholder="pass" formControlName="pass" name="pass">
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="input-group">
+            <input required id="email" type="email" class="form-control" ngModel [(ngModel)]="user.email" placeholder="email" formControlName="email" name="email">
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+
+        <div class="custom-control custom-radio custom-control-inline">
+            <input checked selected type="radio" id="genderF" ngModel value="F" [(ngModel)]="user.gender" placeholder="gender" formControlName="gender" name="gender" class="custom-control-input">
+            <label class="custom-control-label" for="genderF">Feminino</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="genderM" ngModel value="M" [(ngModel)]="user.gender" placeholder="gender" formControlName="gender" name="gender" class="custom-control-input">
+            <label class="custom-control-label" for="genderM">Masculino</label>
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="input-group">
+            <input mask="000.000.000-00" id="cpf" type="text" class="form-control" ngModel [(ngModel)]="user.cpf" placeholder="cpf" formControlName="cpf" name="cpf">
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="input-group">
+            <input id="rg" type="text" class="form-control" ngModel [(ngModel)]="user.rg" placeholder="rg" formControlName="rg" name="rg">
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="input-group">
+            <input mask="(00) 0000-0000||(00) 0 0000-0000" id="phone" type="text" class="form-control" ngModel [(ngModel)]="user.phone" placeholder="phone" formControlName="phone" name="phone">
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="input-group">
+            <input mask="XXX/X0/0000" class="form-control" type="date" value="2020-11-12" id="born" ngModel [(ngModel)]="user.born" placeholder="born" formControlName="born" name="born">
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-2">
+        <div class="input-group">
+            <select id="maritalStatus" ngModel [(ngModel)]="user.maritalStatus" placeholder="maritalStatus" formControlName="maritalStatus" name="maritalStatus" class="custom-select">
+                <option value="1" selected>1-Solteiro</option>
+                <option value="2" >2-Casado</option>
+                <option value="3" >3-Divorciado</option>
+                <option value="4" >4-Viúvo</option>
+                <option value="5" >5-Separado</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-2">
+        <div class="input-group">
+            <input mask="00000-000" id="cep" type="text" class="form-control" ngModel [(ngModel)]="user.cep" placeholder="cep" formControlName="cep" name="cep">
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-5">
+        <div class="input-group">
+            <input id="adress" type="text" class="form-control" ngModel [(ngModel)]="user.adress" placeholder="adress" formControlName="adress" name="adress">
+        </div>
+    </div>
+
+    <div class="col-12">
+        <input type="submit" class="btn btn-large btn-info" value="Salvar" />
+    </div>
+
+</form>
